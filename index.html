@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RandomPasswordGenerator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" href="css/style.css" class="css" /> -->
+    <style>
+      *{
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+}
+.main{
+    width: 40%;
+    min-width: 400px;
+    /* border: 1px solid black; */
+    margin: auto;
+    /* background-color: gre; */
+}
+.box1,.box2,.box3{
+    margin:20px auto;
+    width: 90%;
+    padding: 10px;
+    /* border: 1px solid red; */
+}
+.box1,.box2{
+    height: 60px;
+    /* border: 1px solid white; */
+}
+/* .box2{ */
+    /* justify-items: auto; */
+    /* border: 1px solid white; */
+/* } */
+.box22{
+    margin-top: 10px;
+    background-color: grey;
+    /* border: 1px solid red; */
+    display: flex;
+}
+.fa-copy{
+    margin-top: 0;
+    margin-left: 25px;
+    /* border: 1px solid black; */
+    align-items: center;
+    float: right;
+    background-color: transparent;
+    cursor: pointer;
+}
+.input{
+    width: 90%;
+    /* border: 1px solid blue; */
+    height: 20px;
+    /* align-items: center; */
+    text-align: center;
+    /* padding-top: 5px; */
+    /* margin-top: 15px; */
+    background-color: transparent;
+}
+.box1{
+    text-align: center;
+}
+/* .box2{
+    display: flex;
+    height: 50px;
+} */
+/* .box2 img{
+    width: 20px;
+    height: 20px;  
+    margin-top: 15px;
+} */
+.box31{
+    display: flex;
+    background-color: transparent;
+}
+.char{
+    width: 90%;
+    background-color: transparent;
+}
+.charlen{
+    background-color: transparent;
+}
+.common{
+    background-color: transparent;
+}
+.range{
+    width: 100%;
+    /* border: 1px solid yellow; */
+    background-color: transparent;
+}
+.strength{
+    /* border: 1px solid black; */
+    display: flex;
+    
+}
+.str{
+    width: 100%;
+    /* border: 1px solid blue; */
+    height: 40px;
+    background-color: grey;
+    /* padding-top: 10px; */
+    /* margin-top: 10px; */
+    /* display: flex; */
+}
+.strn{
+    margin: 0;
+    float: right;
+    display: flex;
+}
+.s{
+    border: 1px solid white;
+    width: 10px;
+    height: 20px;
+    margin-top:0;
+    margin-bottom: 0;
+    text-align: center;
+    background-color: grey;
+}
+.btn{
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 40px;
+}
+/* .fa-copy{
+    margin-top:10px ;
+} */
+/* .input{
+    margin-top:10px ;
+} */
+.btn,.strength{
+    margin: 10px auto;
+}
+.btn{
+    background-color: antiquewhite;
+    color: black;
+}
+.box2,.box3{
+    background-color: grey;
+}
+.str{
+    background-color: rgb(85, 81, 81);
+    padding: 10px;
+}
+.btn{
+    background-color: rgb(163, 255, 174);
+}
+.fa-copy,.charlen{
+    color:  rgb(163, 255, 174);
+}
+.range{
+    accent-color: black;
+    /* color: black; */
+}
+@media (max-width:500px){
+    .main{
+        width: 90%;
+    }
+}
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="box1">
+        <p>Password Generator</p>
+      </div>
+      <div class="box2">
+        <!-- <input class="input" type="text" placeholder="PA$5WORD!" />-->
+        <div class="box22">
+          <div id="show" class="input">PA$5WORD!</div>
+          <i class="fa fa-copy" id="copy"></i>
+        </div>
+        <!-- <i class="fa fa-car"></i> -->
+        <!-- <img src="image/copyicon.png" alt="" /> -->
+      </div>
+      <div class="box3">
+        <div class="box31">
+          <p class="char">Character length</p>
+          <p class="charlen" id="charlen1">0</p>
+        </div>
+        <div class="range">
+          <input
+            class="range"
+            id="range"
+            type="range"
+            min="0"
+            max="20"
+            value="0"
+          />
+        </div>
+        <input
+          class="common"
+          type="checkbox"
+          id="param1"
+          name="ucases"
+          value="uppercases"
+        />
+        <label class="common" for="param1"> Include uppercases</label><br />
+        <input
+          class="common"
+          type="checkbox"
+          id="param2"
+          name="lcases"
+          value="lowercases"
+        />
+        <label class="common" for="param2"> Include lowercases</label><br />
+        <input
+          class="common"
+          type="checkbox"
+          id="param3"
+          name="numbers"
+          value="numbers"
+        />
+        <label class="common" for="param3"> Include numbers</label><br />
+        <input
+          class="common"
+          type="checkbox"
+          id="param4"
+          name="symbols"
+          value="symbols"
+        />
+        <label class="common" for="param4"> Include symbols</label><br />
+        <div class="strength">
+          <div class="str">
+            STRENGTH
+            <div id="ss" class="strn">
+              <p class="s" id="s1"></p>
+              <p class="s" id="s2"></p>
+              <p class="s" id="s3"></p>
+              <p class="s" id="s4"></p>
+            </div>
+          </div>
+        </div>
+        <button class="btn" id="btn" type="button" disabled>Generate -></button>
+      </div>
+    </div>
+    <!-- <script src="js/index.js"></script> -->
+    <script>
+      let range=document.getElementById("range");
+let cl=document.getElementById("charlen1");
+let param1=document.getElementById('param1');
+let param2=document.getElementById('param2');
+let param3=document.getElementById('param3');
+let param4=document.getElementById('param4');
+// console.log(cl);
+range.addEventListener('input',()=>{
+    let out=range.value;
+    if(out<5){
+        document.getElementById('btn').disabled = true;
+        alert("Min length must be 5");
+    }
+    else{
+        document.getElementById('btn').disabled = false;
+        // generateArray(out);
+    }
+    console.log(out);
+    cl.innerHTML=out;
+})
+
+function generateArray(){
+    let count=0;
+    if(param1.checked){
+        count++;
+    }
+    if(param2.checked){
+        count++;
+    }
+    if(param3.checked){
+        count++;
+    }
+    if (param4.checked) {
+        count++;
+    }
+    if(count==4){
+        document.getElementById('s1').style.backgroundColor="green";
+        document.getElementById('s2').style.backgroundColor="green";
+        document.getElementById('s3').style.backgroundColor="green";
+        document.getElementById('s4').style.backgroundColor="green";
+    }
+    else if(count==3){
+        // document.getElementById('s1').style.backgroundColor="yellow";
+        document.getElementById('s2').style.backgroundColor="yellow";
+        document.getElementById('s3').style.backgroundColor="yellow";
+        document.getElementById('s4').style.backgroundColor="yellow";
+    }
+    else if(count==2){
+        // document.getElementById('s1').style.backgroundColor="orange";
+        // document.getElementById('s2').style.backgroundColor="orange";
+        document.getElementById('s3').style.backgroundColor="orange";
+        document.getElementById('s4').style.backgroundColor="orange";
+    }
+    else{
+        // document.getElementById('s1').style.backgroundColor="red";
+        // document.getElementById('s2').style.backgroundColor="red";
+        // document.getElementById('s3').style.backgroundColor="red";
+        document.getElementById('s4').style.backgroundColor="red";
+    }
+    let out=range.value-count;
+    console.log(out);
+    // var a=[];
+    let insert='';
+    for(let i=0;i<out;i++){
+        let random=33+Math.floor(Math.random()*94);
+        console.log(random);
+        insert += String.fromCharCode(random);
+        // a.push(insert);
+
+    }
+    console.log(out);
+    // console.log(a);
+    // console.log(insert);
+    return insert;
+}
+
+
+let btn=document.getElementById('btn');
+btn.addEventListener('click',()=>{
+    // alert('btn clicked');
+    document.getElementById('s1').style.backgroundColor="grey";
+    document.getElementById('s2').style.backgroundColor="grey";
+    document.getElementById('s3').style.backgroundColor="grey";
+    document.getElementById('s4').style.backgroundColor="grey";
+    let count=0;
+    let strength=document.getElementById('ss');
+    let show=document.getElementById('show');
+    let passkey=generateArray();
+    if(param1.checked){
+        passkey+=generateUpperChar(); 
+    }
+    if(param2.checked){
+        passkey+=generateLowerChar();
+    }
+    if(param3.checked){
+        passkey+=generateNumberChar();   
+    }
+    if (param4.checked) {
+        passkey+=generateSymbolChar();  
+    }
+    
+    show.innerHTML=passkey;
+})
+
+function doUpperCase(passkey){
+    let key=passkey;
+    let isUpperCasePresent='false';
+    for(let i=0;i<key.length;i++){
+        let a=key.charCodeAt(i);
+        if(a>=65 && a<=90){
+            isUpperCasePresent=true;
+        }
+    }
+    let array=[];
+    let resultPassKeyGenerated='';
+    if(isUpperCasePresent=='false'){
+        // key.charAt(0)='I';
+        
+        for(let i=0;i<key.length;i++){
+            array.push(key.charAt(i));
+        }
+        let randomIndex=Math.floor(Math.random()*(key.length));
+        let randomCharAscii=65+Math.floor(Math.random()*(26));
+        let randomUpperCaseChar=String.fromCharCode(randomCharAscii);
+        // key(randomIndex)=randomUpperCaseChar;
+        array[randomIndex]=randomUpperCaseChar;
+        for(let i=0;i<key.length;i++){
+            resultPassKeyGenerated+=array[i];
+        }
+    }
+    return resultPassKeyGenerated;
+    console.log(isUpperCasePresent);
+    console.log(key.charAt(0));
+    console.log(array);
+    console.log(key);
+    console.log(resultPassKeyGenerated);
+}
+
+function doLowerCase(passkey){
+    let key=passkey;
+    let isLowerCasePresent='false';
+    for(let i=0;i<key.length;i++){
+        let a=key.charCodeAt(i);
+        if(a>=97 && a<=122){
+            isLowerCasePresent=true;
+        }
+    }
+    let array=[];
+    let resultPassKeyGenerated='';
+    if(isLowerCasePresent=='false'){
+        // key.charAt(0)='I';
+        
+        for(let i=0;i<key.length;i++){
+            array.push(key.charAt(i));
+        }
+        let randomIndex=Math.floor(Math.random()*(key.length));
+        let randomCharAscii=97+Math.floor(Math.random()*(26));
+        let randomLowerCaseChar=String.fromCharCode(randomCharAscii);
+        // key(randomIndex)=randomUpperCaseChar;
+        array[randomIndex]=randomLowerCaseChar;
+        for(let i=0;i<key.length;i++){
+            resultPassKeyGenerated+=array[i];
+        }
+    }
+    return resultPassKeyGenerated;
+    console.log(isLowerCasePresent);
+    console.log(key.charAt(0));
+    console.log(array);
+    console.log(key);
+    console.log(resultPassKeyGenerated);
+}
+
+function doNumber(passkey){
+    let key=passkey;
+    let isNumberPresent='false';
+    for(let i=0;i<key.length;i++){
+        let a=key.charCodeAt(i);
+        if(a>=48 && a<=57){
+            isNumberPresent=true;
+        }
+    }
+    let array=[];
+    let resultPassKeyGenerated='';
+    if(isNumberPresent=='false'){
+        // key.charAt(0)='I';
+        
+        for(let i=0;i<key.length;i++){
+            array.push(key.charAt(i));
+        }
+        let randomIndex=Math.floor(Math.random()*(key.length));
+        let randomCharAscii=48+Math.floor(Math.random()*(10));
+        let randomNumber=String.fromCharCode(randomCharAscii);
+        // key(randomIndex)=randomUpperCaseChar;
+        array[randomIndex]=randomNumber;
+        for(let i=0;i<key.length;i++){
+            resultPassKeyGenerated+=array[i];
+        }
+    }
+    return resultPassKeyGenerated;
+    console.log(isNumberPresent);
+    console.log(key.charAt(0));
+    console.log(array);
+    console.log(key);
+    console.log(resultPassKeyGenerated);
+}
+function doSymbol(passkey){
+    let key=passkey;
+    let isSymbolPresent='false';
+    for(let i=0;i<key.length;i++){
+        let a=key.charCodeAt(i);
+        if(a>=58 && a<=64){
+            isSymbolPresent=true;
+        }
+    }
+    let array=[];
+    let resultPassKeyGenerated='';
+    if(isSymbolPresent=='false'){
+        // key.charAt(0)='I';
+        
+        for(let i=0;i<key.length;i++){
+            array.push(key.charAt(i));
+        }
+        let randomIndex=Math.floor(Math.random()*(key.length));
+        let randomCharAscii=58+Math.floor(Math.random()*(7));
+        let randomSymbol=String.fromCharCode(randomCharAscii);
+        // key(randomIndex)=randomUpperCaseChar;
+        array[randomIndex]=randomSymbol;
+        for(let i=0;i<key.length;i++){
+            resultPassKeyGenerated+=array[i];
+        }
+    }
+    return resultPassKeyGenerated;
+    console.log(isSymbolPresent);
+    console.log(key.charAt(0));
+    console.log(array);
+    console.log(key);
+    console.log(resultPassKeyGenerated);
+}
+let copyPassword=document.getElementById('copy');
+copyPassword.addEventListener('click',()=>{
+    let password=document.getElementById('show');
+    // password.select();
+    // password.setSelectionRange(0,99999);
+    let copiedtext=navigator.clipboard.writeText(password.innerText);
+    console.log(copiedtext);
+    alert('text copied');
+});
+
+
+function generateUpperChar(){
+    let randomCharAscii=65+Math.floor(Math.random()*(26));
+    let randomUpperCaseChar=String.fromCharCode(randomCharAscii);
+    console.log((randomUpperCaseChar));
+    return randomUpperCaseChar;
+}
+generateUpperChar();
+function generateLowerChar(){
+    let randomCharAscii=97+Math.floor(Math.random()*(26));
+    let randomLowerCaseChar=String.fromCharCode(randomCharAscii);
+    console.log((randomLowerCaseChar));
+    return randomLowerCaseChar;
+}
+generateLowerChar();
+function generateNumberChar(){
+    let randomCharAscii=48+Math.floor(Math.random()*(10));
+    let randomNumberChar=String.fromCharCode(randomCharAscii);
+    console.log((randomNumberChar));
+    return randomNumberChar;
+}
+generateNumberChar();
+function generateSymbolChar(){
+    let randomCharAscii=58+Math.floor(Math.random()*(7));
+    let randomSymbolChar=String.fromCharCode(randomCharAscii);
+    console.log((randomSymbolChar));
+    return randomSymbolChar;
+}
+generateSymbolChar();
+    </script>
+  </body>
+</html>
